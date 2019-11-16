@@ -51,6 +51,31 @@ button.accept-policy {
   line-height: inherit;
 }
 
+/* Inbox Page styles */
+.inbox-container {
+    display: flex;
+    flex-direction: row;
+    border:1px solid #e1e6ef;
+}
+
+.inbox-container nav {
+    flex:0 0 200px;
+    padding: 1rem;
+    border-right: 1px solid #e1e6ef;
+}
+
+.inbox-container nav .btn-block {
+    margin-bottom: 15px;
+}
+
+.inbox-container nav .nav {
+    flex-direction: column;
+}
+
+.inbox-container nav .nav .nav-item {
+    position: relative;
+}
+
 /* Sticky footer styles
 -------------------------------------------------- */
 html {
