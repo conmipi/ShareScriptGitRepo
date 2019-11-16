@@ -1,20 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\conno\\source\\repos\\ShareScript\\ShareScript\\ShareScript.csproj": {}
+    "D:\\VSRepos\\ShareScriptGitRepo\\ShareScript\\ShareScript.csproj": {}
   },
   "projects": {
-    "C:\\Users\\conno\\source\\repos\\ShareScript\\ShareScript\\ShareScript.csproj": {
+    "D:\\VSRepos\\ShareScriptGitRepo\\ShareScript\\ShareScript.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\conno\\source\\repos\\ShareScript\\ShareScript\\ShareScript.csproj",
+        "projectUniqueName": "D:\\VSRepos\\ShareScriptGitRepo\\ShareScript\\ShareScript.csproj",
         "projectName": "ShareScript",
-        "projectPath": "C:\\Users\\conno\\source\\repos\\ShareScript\\ShareScript\\ShareScript.csproj",
-        "packagesPath": "C:\\Users\\conno\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\conno\\source\\repos\\ShareScript\\ShareScript\\obj\\",
+        "projectPath": "D:\\VSRepos\\ShareScriptGitRepo\\ShareScript\\ShareScript.csproj",
+        "packagesPath": "C:\\Users\\ddrde\\.nuget\\packages\\",
+        "outputPath": "D:\\VSRepos\\ShareScriptGitRepo\\ShareScript\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "C:\\Users\\conno\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\ddrde\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
