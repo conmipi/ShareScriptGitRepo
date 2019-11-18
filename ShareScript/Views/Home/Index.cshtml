@@ -1,8 +1,237 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+            integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+            crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.css" />
+
+    <style>
+        @@media (max-width:575px) {
+            .display-4 {
+                font-size: 1.5rem;
+            }
+
+            .day h5 {
+                background-color: #f8f9fa;
+                padding: 3px 5px 5px;
+                margin: -8px -8px 8px -8px;
+            }
+
+            .date {
+                padding-left: 4px;
+            }
+        }
+
+        @@media (min-width: 576px) {
+            .day {
+                height: 8vw;
+            }
+        }
+
+        /* The Modal (background) */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgb(0,0,0); /* Fallback color */
+            background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+            -webkit-animation-name: fadeIn; /* Fade in the background */
+            -webkit-animation-duration: 0.4s;
+            animation-name: fadeIn;
+            animation-duration: 0.4s
+        }
+
+        /* Modal Content */
+        .modal-content {
+            position: fixed;
+            bottom: 50%;
+            background-color: #fefefe;
+            width: 100%;
+            -webkit-animation-name: slideIn;
+            -webkit-animation-duration: 0.4s;
+            animation-name: slideIn;
+            animation-duration: 0.4s
+        }
+
+        /* The Close Button */
+        .close {
+            color: white;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+            .close:hover,
+            .close:focus {
+                color: #000;
+                text-decoration: none;
+                cursor: pointer;
+            }
+
+        .modal-header {
+            padding: 2px 16px;
+            background-color: #5cb85c;
+            color: white;
+        }
+
+        .modal-body {
+            padding: 2px 16px;
+        }
+
+
+        /* Add Animation */
+        @@-webkit-keyframes slideIn {
+            from {
+                bottom: -300px;
+                opacity: 0
+            }
+
+            to {
+                bottom: 0;
+                opacity: 1
+            }
+        }
+
+        @@keyframes slideIn {
+            from {
+                bottom: -300px;
+                opacity: 0
+            }
+
+            to {
+                bottom: 50%;
+                opacity: 1
+            }
+        }
+
+        @@-webkit-keyframes fadeIn {
+            from {
+                opacity: 0
+            }
+
+            to {
+                opacity: 1
+            }
+        }
+
+        @@keyframes fadeIn {
+            from {
+                opacity: 0
+            }
+
+            to {
+                opacity: 1
+            }
+        }
+    </style>
+    <!-- Bootstrap Date-Picker Plugin -->
+
+</head>
+<body>
+
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modal-header-name">Modal Header</h2>
+                <span class="close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="bootstrap-iso">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+
+                                <!-- Form code begins -->
+                                <form method="post">
+                                    <div class="form-group">
+                                        <!-- Date input -->
+                                        <label class="control-label" for="date">Date</label>
+                                        <input class="form-control" id="date" name="date" placeholder="MM/DD/YYY" type="text" />
+                                    </div>
+                                    <div class="form-group">
+                                        <!-- Submit button -->
+                                        <button class="btn btn-primary " name="submit" type="submit">Submit</button>
+                                    </div>
+                                </form>
+                                <!-- Form code ends -->
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <button type="button" class="btn btn-primary" onclick="PreviousMonth()">Previous Month</button>
+    <button type="button" class="btn btn-primary" onclick="NextMonth()">Next Month</button>
+    <div id="calendar-div" class="text-center">
+        <calendar month="@ViewBag.Month" year="@ViewBag.Year" events="@ViewBag.CalendarEvents" />
+    </div>
+    <script>
+
+        // Get the modal
+        var modal = document.getElementById("myModal");
+
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close")[0];
+
+        //Get the modal header's name
+        var modalHeaderName = document.getElementById("modal-header-name");
+
+        //Div that contains the calendar
+        var calendarDiv = document.getElementById("calendar-div");
+
+        function DisplayModal(headerName) {
+            modalHeaderName.innerHTML = "Events on the " + headerName;
+            modal.style.display = "block";
+        }
+
+        //to be implemented
+        //function PreviousMonth() {
+        //    calendarDiv.remove();
+        //}
+
+        //function NextMonth() {
+        //    calendarDiv.remove();
+        //}
+
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function () {
+            modal.style.display = "none";
+        }
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+
+        $(document).ready(function () {
+            var date_input = $('input[name="date"]'); //our date input has the name "date"
+            var container = $('.bootstrap-iso form').length > 0 ? $('.bootstrap-iso form').parent() : "body";
+            var options = {
+                format: 'mm/dd/yyyy',
+                container: container,
+                todayHighlight: true,
+                autoclose: true,
+            };
+            date_input.datepicker(options);
+        })
+    </script>
+</body>
+

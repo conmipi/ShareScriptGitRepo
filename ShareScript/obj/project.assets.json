@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\conno\\source\\repos\\ShareScript\\ShareScript\\ShareScript.csproj",
+      "projectUniqueName": "C:\\Users\\conno\\Source\\Repos\\ShareScriptGitRepo\\ShareScript\\ShareScript.csproj",
       "projectName": "ShareScript",
-      "projectPath": "C:\\Users\\conno\\source\\repos\\ShareScript\\ShareScript\\ShareScript.csproj",
+      "projectPath": "C:\\Users\\conno\\Source\\Repos\\ShareScriptGitRepo\\ShareScript\\ShareScript.csproj",
       "packagesPath": "C:\\Users\\conno\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\conno\\source\\repos\\ShareScript\\ShareScript\\obj\\",
+      "outputPath": "C:\\Users\\conno\\Source\\Repos\\ShareScriptGitRepo\\ShareScript\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\conno\\AppData\\Roaming\\NuGet\\NuGet.Config",
