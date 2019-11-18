@@ -1,0 +1,148 @@
+﻿body {
+    background-color: #ddd;
+    padding: 0;
+    margin: 0;
+}
+
+.nav-main {
+    position: fixed;
+    left: 15%;
+    top: 0;
+    width: 90%;
+    height: 60px;
+    background-color: #ecf0f1;
+    display: flex;
+    flex-wrap: wrap;
+    z-index: 1000;
+}
+
+.btn-toggle-nav {
+    width: 60px;
+    height: 60px;
+}
+
+.btn-toggle-nav:hover {
+    opacity: 0.5;
+    cursor: pointer;
+}
+
+.btn-x {
+    width: 35px;
+    height: 5px;
+    background-color: white;
+    margin: 6px 0;
+}
+
+.nav-main ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0 0 0 15px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+    .nav-main ul li {
+        list-style: none;
+        line-height: 60px;
+        letter-spacing: 3px;
+    }
+
+        .nav-main ul li a {
+            display: block;
+            height: 100%;
+            padding: 0 10px;
+            text-transform: uppercase;
+            text-decoration: none;
+            color: #2c3e50;
+            font-family: arial;
+            font-size: 16px;
+        }
+
+            .nav-main ul li a:hover {
+                opacity: 0.5;
+                transition: all 0.1s ease-in-out;
+            }
+
+.nav-sidebar {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 50px;
+    height: 100vh;
+    padding: 0 5px;
+    background-color: #34495e;
+    z-index: 1000;
+    transition: all 0.3s ease-in-out;
+}
+
+    .nav-sidebar ul {
+        padding: 15px 0 0 0;
+        overflow: hidden;
+        visibility: hidden;
+    }
+
+.nav-siderbar ul li {
+    list-style: none;
+}
+
+.nav-sidebar ul li span, .nav-sidebar ul li a {
+    display: block;
+    line-height: 60px;
+    letter-spacing: 3px;
+    padding: 0 10px;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: #ecf0f1;
+    font-family: arial;
+    font-size: 16px;
+    white-space: nowrap;
+    opacity: 0;
+    transition: all 0.3s ease-in-out;
+}
+
+.nav-sidebar ul li a:hover {
+    background-color: #2c3e50;
+}
+
+#search {
+    width: 80vw;
+}
+
+#burger-btn{
+    visibility: visible;
+}
+
+#content_span {
+    position: absolute;
+    left: 50px;
+    height: 90%;
+    width: 97vw;
+    top: 10%;
+    background-color: #f0f0f7;
+}
+
+#sidebar_list{
+
+}
+
+
+.col-pat {
+    height: 150px;
+    background-color: #ffffff;
+    margin-left: 50px;
+    margin-right: 50px;
+    margin-top: 50px;
+}
+
+.picture {
+    background: url(https://img.icons8.com/pastel-glyph/64/000000/person-male.png);
+    width: 50px;
+    height: 50px;
+    margin: 10px 0 0 10px;
+}
+
+.name{
+    width: 70px;
+    height: 50px;
+    margin: 10px 0 0 10px;
+}
