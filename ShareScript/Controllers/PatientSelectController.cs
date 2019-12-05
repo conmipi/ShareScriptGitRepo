@@ -11,13 +11,21 @@ namespace ShareScript.Controllers
 {
     public class PatientSelectController : Controller
     {
+        Patient patient = new Patient();
         // GET: /<controller>/
         public ActionResult Index()
         {
-            Patient patient = new Patient();
 
             return View(patient);
         }
+
+
+        public ActionResult PatientPass(Patient patient)
+        {
+            TempData["Patient"] = patient;
+            return RedirectToAction("Index", "PrescriptionCreationController");
+        }
+
 
 
     }
