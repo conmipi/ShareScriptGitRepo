@@ -59,5 +59,6 @@ namespace ShareScript.Models
         public string PatientDOB { get => patientDOB; set => patientDOB = value; }
         public object InsuranceInfo { get => insuranceInfo; set => insuranceInfo = value; }
         public bool ControlledSub { get => controlledSub; set => controlledSub = value; }
+
     }
 }

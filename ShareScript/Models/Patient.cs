@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace ShareScript.Models
 {
@@ -46,5 +47,22 @@ namespace ShareScript.Models
         public object MedicalHistory { get => medicalHistory; set => medicalHistory = value; }
         public int PhoneNumber { get => phoneNumber; set => phoneNumber = value; }
         public List<Prescription> Prescriptions { get => prescriptions; set => prescriptions = value; }
+
+
+        public void CreatePrescription(int prescriptionId, String drugName, float dosage, String issueDate, String expiryDate, String doctorName, Object doctorSignature, String patientName, String patientDOB, Object insuranceInfo, Boolean controlledSub)
+        {
+            Prescription p = new Prescription(prescriptionId, drugName, dosage, issueDate, expiryDate, doctorName, doctorSignature, patientName, patientDOB, insuranceInfo, controlledSub);
+            prescriptions.Add(p);
+        }
+
+        public string ToString()
+        {
+            string s = "";
+            for(int i = 0; i < prescriptions.Count(); i++)
+            {
+                s += prescriptions[i].PrescriptionId + " \n" + prescriptions[i].DrugName;
+            }
+            return s;
+        }
     }
 }
