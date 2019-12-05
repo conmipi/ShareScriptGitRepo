@@ -16,6 +16,7 @@
 
   <ItemGroup>
     <Folder Include="Views\PatientSelect\" />
+    <Folder Include="Views\PrescriptionCreation\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="Controllers\PatientSelect.cs" />

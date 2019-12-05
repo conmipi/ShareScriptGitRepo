@@ -298,3 +298,4 @@ C:/Users/conno/Source/Repos/ShareScriptGitRepo/ShareScript/obj/Debug/netcoreapp3
 /Users/dervinis/Desktop/SEAssignment/ShareScriptGitRepo/ShareScript/obj/Debug/netcoreapp3.0/ShareScript.csproj.CopyComplete
 /Users/dervinis/Desktop/SEAssignment/ShareScriptGitRepo/ShareScript/obj/Debug/netcoreapp3.0/ShareScript.dll
 /Users/dervinis/Desktop/SEAssignment/ShareScriptGitRepo/ShareScript/obj/Debug/netcoreapp3.0/ShareScript.pdb
+/Users/dervinis/Desktop/SEAssignment/ShareScriptGitRepo/ShareScript/obj/Debug/netcoreapp3.0/Razor/Views/PrescriptionCreation/Index.cshtml.g.cs
