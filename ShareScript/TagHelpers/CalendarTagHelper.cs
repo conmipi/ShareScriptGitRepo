@@ -4,24 +4,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Xml.Linq;
+using ShareScript.Models;
 
 namespace ShareScript.TagHelpers
 {
     //Some code taken from
     //https://cpratt.co/bootstrap-4-responsive-calendar-asp-net-core-taghelper/
 
-    public class CalendarEvent
-    {
-        public CalendarEvent (string _title, DateTime _dateTime, string _type)
-        {
-            Title = _title;
-            Date = _dateTime;
-            Type = _type;
-        }
-        public string Title { get; set; }
-        public DateTime Date { get; set; }
-        public string Type { get; set; }
-    }
 
     [HtmlTargetElement("calendar", TagStructure = TagStructure.NormalOrSelfClosing)]
     public class CalendarTagHelper : TagHelper
@@ -45,7 +34,11 @@ namespace ShareScript.TagHelpers
             var monthStart = new DateTime(Year, Month, 1);
             var events = Events?.GroupBy(e => e.Date);
 
+
+
             var html = new XDocument(
+                new XElement("div",
+                new XAttribute("id", "calContainer"),
                 new XElement("div",
                     new XAttribute("class", "container-fluid"),
                     new XElement("header",
@@ -68,7 +61,20 @@ namespace ShareScript.TagHelpers
                         GetDatesHtml()
                     )
                 )
-            );
+            )) ;
+
+            html.Root.AddFirst(new XElement("div",
+                new XAttribute("id","prevBtnDiv"),
+                    new XElement("button",
+                    new XAttribute("id", "prevBtn"),
+                    new XAttribute("class", "btn btn-primary"),
+                    "previous month"),
+                    new XElement("button",
+                    new XAttribute("id", "nextBtn"),
+                    new XAttribute("class", "btn btn-primary"),
+                    "next month")
+
+                    ));
 
             return html.ToString();
 

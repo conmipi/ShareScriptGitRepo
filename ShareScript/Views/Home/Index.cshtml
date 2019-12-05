@@ -176,10 +176,8 @@
         </div>
 
     </div>
-    <button type="button" class="btn btn-primary" onclick="PreviousMonth()">Previous Month</button>
-    <button type="button" class="btn btn-primary" onclick="NextMonth()">Next Month</button>
+
     <div id="calendar-div" class="text-center">
-        <calendar month="@ViewBag.Month" year="@ViewBag.Year" events="@ViewBag.CalendarEvents" />
     </div>
     <script>
 
@@ -195,19 +193,14 @@
         //Div that contains the calendar
         var calendarDiv = document.getElementById("calendar-div");
 
+        //Calendar Tag
+        var calendar = document.getElementById("calendar");
+
         function DisplayModal(headerName) {
             modalHeaderName.innerHTML = "Events on the " + headerName;
             modal.style.display = "block";
         }
-
-        //to be implemented
-        //function PreviousMonth() {
-        //    calendarDiv.remove();
-        //}
-
-        //function NextMonth() {
-        //    calendarDiv.remove();
-        //}
+        
 
         // When the user clicks on <span> (x), close the modal
         span.onclick = function () {
@@ -230,7 +223,38 @@
                 todayHighlight: true,
                 autoclose: true,
             };
+
             date_input.datepicker(options);
+
+
+            $.ajax({
+                type: "GET",
+                url: "home/GetEvents",
+                dataType: 'JSON',
+                contentType: "application/json",
+                success: function (data) {
+                    console.log(data);
+                }
+            });
+
+            $.ajax({
+                type: "GET",
+                url: "home/GetDates",
+                dataType: 'JSON',
+                contentType: "application/json",
+                success: function (data) {
+                    calendarDiv.insertAdjacentHTML('beforeend', data);
+                }
+            });
+
+
+            function renderEvents() {
+
+            }
+
+            function renderDates() {
+
+            }
         })
     </script>
 </body>
