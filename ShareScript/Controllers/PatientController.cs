@@ -12,5 +12,7 @@ namespace ShareScript.Controllers
         {
             return View("Index");
         }
+
+
     }
 }

@@ -55,6 +55,26 @@ namespace ShareScript.Models
             prescriptions.Add(p);
         }
 
+        public List<Prescription> ViewPrescriptions()
+        {
+            // Check to see if the list of prescriptions is null. If so, insert some dummy data
+            if (prescriptions == null)
+            {
+                // Declare & initialize a new prescription list
+                List<Prescription> prescriptions = new List<Prescription>();
+
+                // Add prescription objects to the list
+                prescriptions.Add(new Prescription(0, "Xanax", 10, "4 December 2019", "5 December 2022", "Dr. Smith", null, firstName + " " + lastName, DOB, null, true));
+                prescriptions.Add(new Prescription(0, "Acetamemophin", 5, "4 December 2019", "5 December 2020", "Dr. Smith", null, firstName + "" + lastName, DOB, null, true));
+
+                // Set the prescription list via mutators
+                Prescriptions = prescriptions;
+            }
+
+            // Return the list of prescriptions
+            return Prescriptions;
+        }
+
         public string ToString()
         {
             string s = "";
