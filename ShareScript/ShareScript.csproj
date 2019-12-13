@@ -16,4 +16,15 @@
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.0.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Remove="Controllers\PatientSelect.cs" />
+    <Compile Remove="Controllers\PatientSelectController.cs" />
+    <Compile Remove="Controllers\PrescriptionCreationController.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Remove="Views\Patient\PrescriptionSelect.cshtml" />
+    <Content Remove="Views\PatientSelect\Index.cshtml" />
+    <Content Remove="Views\PatientSelect\CreatePrescription.cshtml" />
+    <Content Remove="Views\PrescriptionCreation\Index.cshtml" />
+  </ItemGroup>
 </Project>

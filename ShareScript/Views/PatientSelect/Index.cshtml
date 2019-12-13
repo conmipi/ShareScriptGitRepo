@@ -1,0 +1,28 @@
+﻿@model ShareScript.Models.Patient
+
+@{
+    ViewData["Title"] = "Patient";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    #patient-page {
+        position: absolute;
+        left: 10vw; 
+    }
+</style>
+
+
+<div id="patient-page">
+    <h1>Patient: @Model.FirstName @Model.LastName</h1>
+    <div class="container-fluid">
+        <div class="col">
+            <p>DOB: @Model.Dob</p>
+            <p>Address: @Model.Address</p>
+            <p>Phone Number: @Model.PhoneNumber</p>
+        </div>
+        <div class="col">
+            <a role="button" class="btn btn-primary" href='@Url.Action("Index", "PrescriptionCreation")'>Create Prescription</a>
+        </div>
+    </div>
+</div>

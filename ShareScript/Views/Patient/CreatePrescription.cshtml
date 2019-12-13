@@ -1,0 +1,43 @@
+﻿@model ShareScript.Models.Prescription
+
+
+@{
+    ViewData["Title"] = "Prescription Creation";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    #patient-page {
+        position: absolute;
+        left: 10vw;
+    }
+
+    #controlledSub{
+        position: relative;
+        left: 100px;
+    }
+</style>
+
+
+<div id="patient-page">
+    <h1>Prescription Creation</h1>
+    <div class="container-fluid">
+            @using (Html.BeginForm("AddPrescription", "Patient", FormMethod.Post))
+            {
+            <div class="form-group">
+                <label for="drugName">Name of Drug: </label>
+                @Html.TextBoxFor(m => m.DrugName, "Enter drug name", new { @class ="form-control"})
+            </div>
+            <div class="form-group">
+                <label for="dosage">Dosage: </label>
+                @Html.TextBoxFor(m => m.Dosage, "Enter dosage for the drug", new { @class ="form-control"})
+            </div>
+            <div class="form-check">
+                <label class="form-check-label" for="controlledSub">Controlled Substance?</label>
+                @Html.CheckBoxFor(m => m.ControlledSub, new { @class ="form-check-input"})
+            </div>
+            <br />
+            <button type="submit" class="btn btn-primary">Submit</button>
+            }
+    </div>
+</div>
