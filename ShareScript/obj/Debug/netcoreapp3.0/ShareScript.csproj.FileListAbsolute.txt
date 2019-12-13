@@ -433,3 +433,4 @@ C:\Users\Mark\Source\Repos\ShareScriptGitRepo\ShareScript\obj\Debug\netcoreapp3.
 C:\Users\Mark\Source\Repos\ShareScriptGitRepo\ShareScript\obj\Debug\netcoreapp3.0\ShareScript.csproj.CopyComplete
 C:\Users\Mark\Source\Repos\ShareScriptGitRepo\ShareScript\obj\Debug\netcoreapp3.0\ShareScript.dll
 C:\Users\Mark\Source\Repos\ShareScriptGitRepo\ShareScript\obj\Debug\netcoreapp3.0\ShareScript.pdb
+C:\Users\Mark\Source\Repos\ShareScriptGitRepo\ShareScript\obj\Debug\netcoreapp3.0\Razor\Views\Patient\PrescriptionList.cshtml.g.cs
