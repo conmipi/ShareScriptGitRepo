@@ -11,12 +11,19 @@ namespace ShareScript.Models
 
     public class CalendarEvent
     {
+        public CalendarEvent()
+        {
+
+        }
+
         public CalendarEvent(string _title, DateTime _dateTime, string _type)
         {
             Title = _title;
             Date = _dateTime;
             Type = _type;
         }
+        public int Id { get; set; }
+
         public string Title { get; set; }
         public DateTime Date { get; set; }
         public string Type { get; set; }

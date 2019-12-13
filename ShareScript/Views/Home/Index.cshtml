@@ -54,9 +54,10 @@
         /* Modal Content */
         .modal-content {
             position: fixed;
+            left: 200px;
             bottom: 50%;
             background-color: #fefefe;
-            width: 100%;
+            width: 80%;
             -webkit-animation-name: slideIn;
             -webkit-animation-duration: 0.4s;
             animation-name: slideIn;
@@ -155,11 +156,12 @@
                             <div class="col-md-6 col-sm-6 col-xs-12">
 
                                 <!-- Form code begins -->
-                                <form method="post">
+                                <form method="post" onsubmit="addEvent()">
                                     <div class="form-group">
                                         <!-- Date input -->
                                         <label class="control-label" for="date">Date</label>
                                         <input class="form-control" id="date" name="date" placeholder="MM/DD/YYY" type="text" />
+                                        <input class="form-control" id="eventName" name="eventName" placeholder="Name of Event" type="text" />
                                     </div>
                                     <div class="form-group">
                                         <!-- Submit button -->
@@ -176,13 +178,18 @@
         </div>
 
     </div>
-
+    <button id="prevBtn" onclick="prevMonth()">Previous Month</button>
+    <button id="nextBtn" onclick="nextMonth()">Next Month</button>
     <div id="calendar-div" class="text-center">
+
     </div>
     <script>
 
         // Get the modal
         var modal = document.getElementById("myModal");
+        var date = document.getElementById("date");
+        var eventName = document.getElementById("eventName");
+        var event;
 
         // Get the <span> element that closes the modal
         var span = document.getElementsByClassName("close")[0];
@@ -192,15 +199,32 @@
 
         //Div that contains the calendar
         var calendarDiv = document.getElementById("calendar-div");
+        var calendarTitle;
+        var calDate;
+        var calDateSplit;
+        const months = {
+            January: 1,
+            February: 2,
+            March: 3,
+            April: 4,
+            May: 5,
+            June: 6,
+            July: 7,
+            August: 8,
+            September: 9,
+            October: 10,
+            November: 11,
+            December: 12
+        }
 
-        //Calendar Tag
-        var calendar = document.getElementById("calendar");
+        var calMonth;
+        var calYear;
 
         function DisplayModal(headerName) {
             modalHeaderName.innerHTML = "Events on the " + headerName;
             modal.style.display = "block";
         }
-        
+
 
         // When the user clicks on <span> (x), close the modal
         span.onclick = function () {
@@ -213,10 +237,87 @@
                 modal.style.display = "none";
             }
         }
+        $.ajax({
+            type: "GET",
+            url: "home/GetDates",
+            dataType: 'JSON',
+            contentType: "application/json",
+            success: function (data) {
+                calendarDiv.insertAdjacentHTML('beforeend', data);
+            }
+        });
+
+        function nextMonth() {
+            calendarTitle = document.getElementById("title");
+            calDate = calendarTitle.innerHTML.toString();
+            calDateSplit = calDate.split(" ");
+            calYear = parseInt(calDateSplit[1]);
+
+            if (months[calDateSplit[0]] == months.December) {
+                calMonth = 1;
+                calYear = parseInt(calDateSplit[1]) + 1;
+            }
+            else {
+                calMonth = months[calDateSplit[0]] + 1;
+            }
+            calendarDiv.removeChild(calendarDiv.childNodes[1]);
+            $.ajax({
+                type: 'POST',
+                contentType: 'application/x-www-form-urlencoded',
+                data: { year: calYear, month: calMonth },
+                url: "/home/SetDate",
+                cache: false,
+                success: function (data) {
+                    calendarDiv.insertAdjacentHTML('beforeend', data);
+                }
+
+            });
+        }
+
+        function prevMonth() {
+            calendarTitle = document.getElementById("title");
+            calDate = calendarTitle.innerHTML.toString();
+            calDateSplit = calDate.split(" ");
+            calYear = parseInt(calDateSplit[1]);
+
+            if (months[calDateSplit[0]] == months.January) {
+                calMonth = 12;
+                calYear = parseInt(calDateSplit[1]) - 1;
+            }
+            else {
+                calMonth = months[calDateSplit[0]] - 1;
+            }
+            console.log(calMonth);
+            calendarDiv.removeChild(calendarDiv.childNodes[1]);
+            $.ajax({
+                type: 'POST',
+                contentType: 'application/x-www-form-urlencoded',
+                data: { year: calYear, month: calMonth },
+                url: "/home/SetDate",
+                cache: false,
+                success: function (data) {
+                    calendarDiv.insertAdjacentHTML('beforeend', data);
+                }
+
+            });
+        }
+
+        function addEvent() {
+            event = { _title : eventName, _dateTime : date, _type : "info"}
+            $.ajax({
+                type: "POST",
+                data: JSON.stringify(event),
+                url: "home/PostCalendarEvent",
+                contentType: "application/json"
+            });
+        }
 
         $(document).ready(function () {
             var date_input = $('input[name="date"]'); //our date input has the name "date"
             var container = $('.bootstrap-iso form').length > 0 ? $('.bootstrap-iso form').parent() : "body";
+            //Get calendar buttons
+            var prevBtn = document.getElementById("prevBtn");
+            var nextBtn = document.getElementById("nextBtn");
             var options = {
                 format: 'mm/dd/yyyy',
                 container: container,
@@ -227,34 +328,7 @@
             date_input.datepicker(options);
 
 
-            $.ajax({
-                type: "GET",
-                url: "home/GetEvents",
-                dataType: 'JSON',
-                contentType: "application/json",
-                success: function (data) {
-                    console.log(data);
-                }
-            });
 
-            $.ajax({
-                type: "GET",
-                url: "home/GetDates",
-                dataType: 'JSON',
-                contentType: "application/json",
-                success: function (data) {
-                    calendarDiv.insertAdjacentHTML('beforeend', data);
-                }
-            });
-
-
-            function renderEvents() {
-
-            }
-
-            function renderDates() {
-
-            }
         })
     </script>
 </body>

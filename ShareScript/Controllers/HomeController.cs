@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using ShareScript.Models;
 using ShareScript.TagHelpers;
@@ -19,9 +20,17 @@ namespace ShareScript.Controllers
 
         public List<CalendarEvent> LocalEvents = new List<CalendarEvent>();
 
-        public HomeController(ILogger<HomeController> logger)
+        private int month;
+
+        private int year;
+
+        private readonly CalendarEventContext _context;
+
+
+        public HomeController(ILogger<HomeController> logger, CalendarEventContext context)
         {
             _logger = logger;
+            _context = context;
         }
 
         public IActionResult Index()
@@ -45,6 +54,12 @@ namespace ShareScript.Controllers
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
+        [HttpPost]
+        public IActionResult SetDate(int month, int year)
+        {
+            return Json(GetHtml(year, month));
+        }
+
         [HttpGet]
         public IActionResult GetDates()
         {
@@ -58,6 +73,59 @@ namespace ShareScript.Controllers
         {
             LocalEvents.Add(new CalendarEvent("Test Event", DateTime.Today, "info"));
             return Json(LocalEvents);
+        }
+
+        // GET: api/CalendarEvents
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<CalendarEvent>>> GetCalendarEvents()
+        {
+            return await _context.CalendarEvents.ToListAsync();
+        }
+
+        [HttpGet("{id}")]
+        public async Task<ActionResult<CalendarEvent>> GetCalendarEvent(int id)
+        {
+            var calendarEvent = await _context.CalendarEvents.FindAsync(id);
+
+            if (calendarEvent == null)
+            {
+                return NotFound();
+            }
+
+            return calendarEvent;
+        }
+
+        // POST: api/CalendarEvents
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for
+        // more details see https://aka.ms/RazorPagesCRUD.
+        [HttpPost]
+        public async Task<ActionResult<CalendarEvent>> PostCalendarEvent(CalendarEvent calendarEvent)
+        {
+            _context.CalendarEvents.Add(calendarEvent);
+            await _context.SaveChangesAsync();
+
+            return CreatedAtAction("GetCalendarEvent", new { id = calendarEvent.Id }, calendarEvent);
+        }
+
+        // DELETE: api/CalendarEvents/5
+        [HttpDelete("{id}")]
+        public async Task<ActionResult<CalendarEvent>> DeleteCalendarEvent(int id)
+        {
+            var calendarEvent = await _context.CalendarEvents.FindAsync(id);
+            if (calendarEvent == null)
+            {
+                return NotFound();
+            }
+
+            _context.CalendarEvents.Remove(calendarEvent);
+            await _context.SaveChangesAsync();
+
+            return calendarEvent;
+        }
+
+        private bool CalendarEventExists(int id)
+        {
+            return _context.CalendarEvents.Any(e => e.Id == id);
         }
 
         private string GetHtml(int Year, int Month )
@@ -75,6 +143,7 @@ namespace ShareScript.Controllers
                     new XElement("header",
                         new XElement("h4",
                             new XAttribute("class", "display-4 mb-2 text-center"),
+                            new XAttribute("id", "title"),
                             monthStart.ToString("MMMM yyyy")
                         ),
                         new XElement("div",
@@ -94,18 +163,6 @@ namespace ShareScript.Controllers
                 )
             ));
 
-            html.Root.AddFirst(new XElement("div",
-                new XAttribute("id", "prevBtnDiv"),
-                    new XElement("button",
-                    new XAttribute("id", "prevBtn"),
-                    new XAttribute("class", "btn btn-primary"),
-                    "previous month"),
-                    new XElement("button",
-                    new XAttribute("id", "nextBtn"),
-                    new XAttribute("class", "btn btn-primary"),
-                    "next month")
-
-                    ));
 
             return html.ToString();
 
