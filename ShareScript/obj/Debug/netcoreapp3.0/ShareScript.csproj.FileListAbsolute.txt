@@ -285,7 +285,6 @@ C:/Users/conno/Source/Repos/ShareScriptGitRepo/ShareScript/obj/Debug/netcoreapp3
 /Users/dervinis/Desktop/SEAssignment/ShareScriptGitRepo/ShareScript/obj/Debug/netcoreapp3.0/Razor/Views/Home/Privacy.cshtml.g.cs
 /Users/dervinis/Desktop/SEAssignment/ShareScriptGitRepo/ShareScript/obj/Debug/netcoreapp3.0/Razor/Views/Inbox/Index.cshtml.g.cs
 /Users/dervinis/Desktop/SEAssignment/ShareScriptGitRepo/ShareScript/obj/Debug/netcoreapp3.0/Razor/Views/Patient/Index.cshtml.g.cs
-/Users/dervinis/Desktop/SEAssignment/ShareScriptGitRepo/ShareScript/obj/Debug/netcoreapp3.0/Razor/Views/PatientSelect/Index.cshtml.g.cs
 /Users/dervinis/Desktop/SEAssignment/ShareScriptGitRepo/ShareScript/obj/Debug/netcoreapp3.0/Razor/Views/Shared/Error.cshtml.g.cs
 /Users/dervinis/Desktop/SEAssignment/ShareScriptGitRepo/ShareScript/obj/Debug/netcoreapp3.0/Razor/Views/Shared/_Layout.cshtml.g.cs
 /Users/dervinis/Desktop/SEAssignment/ShareScriptGitRepo/ShareScript/obj/Debug/netcoreapp3.0/Razor/Views/Shared/_Sidebar.cshtml.g.cs
@@ -298,4 +297,5 @@ C:/Users/conno/Source/Repos/ShareScriptGitRepo/ShareScript/obj/Debug/netcoreapp3
 /Users/dervinis/Desktop/SEAssignment/ShareScriptGitRepo/ShareScript/obj/Debug/netcoreapp3.0/ShareScript.csproj.CopyComplete
 /Users/dervinis/Desktop/SEAssignment/ShareScriptGitRepo/ShareScript/obj/Debug/netcoreapp3.0/ShareScript.dll
 /Users/dervinis/Desktop/SEAssignment/ShareScriptGitRepo/ShareScript/obj/Debug/netcoreapp3.0/ShareScript.pdb
-/Users/dervinis/Desktop/SEAssignment/ShareScriptGitRepo/ShareScript/obj/Debug/netcoreapp3.0/Razor/Views/PrescriptionCreation/Index.cshtml.g.cs
+/Users/dervinis/Desktop/SEAssignment/ShareScriptGitRepo/ShareScript/obj/Debug/netcoreapp3.0/Razor/Views/Patient/CreatePrescription.cshtml.g.cs
+/Users/dervinis/Desktop/SEAssignment/ShareScriptGitRepo/ShareScript/obj/Debug/netcoreapp3.0/Razor/Views/Patient/PatientSelect.cshtml.g.cs

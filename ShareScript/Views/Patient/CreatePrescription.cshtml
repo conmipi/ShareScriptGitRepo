@@ -22,7 +22,7 @@
 <div id="patient-page">
     <h1>Prescription Creation</h1>
     <div class="container-fluid">
-            @using (Html.BeginForm("Index", "PrescriptionCreation", FormMethod.Post))
+            @using (Html.BeginForm("AddPrescription", "Patient", FormMethod.Post))
             {
             <div class="form-group">
                 <label for="drugName">Name of Drug: </label>

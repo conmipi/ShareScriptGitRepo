@@ -9,7 +9,7 @@ namespace ShareScript.Models
         private int patientID;
         private String firstName;
         private String lastName;
-        private String DOB;
+        private String dob;
         private String address;
         private Object medicalHistory;
         private int phoneNumber;
@@ -20,39 +20,38 @@ namespace ShareScript.Models
             patientID = 0000;
             firstName = "Joe";
             lastName = "Doe";
-            DOB = "00/00/0000";
+            dob = "00/00/0000";
             address = "addressstreet";
             medicalHistory = null;
             phoneNumber = 11111111;
-            prescriptions = null;
+            prescriptions = new List<Prescription>();
         }
 
-        public Patient(int patientID, String firstName, String lastName, String DOB, String address, Object medicalHistory, int phoneNumber, List<Prescription> prescriptions)
+        public Patient(int patientID, String firstName, String lastName, String dob, String address, Object medicalHistory, int phoneNumber, List<Prescription> prescriptions)
         {
             this.patientID = patientID;
             this.firstName = firstName;
             this.lastName = lastName;
-            this.DOB = DOB;
+            this.dob = dob;
             this.address = address;
             this.medicalHistory = medicalHistory;
             this.phoneNumber = phoneNumber;
-            this.prescriptions = prescriptions;
+            this.prescriptions = new List<Prescription>(prescriptions);
         }
 
         public int PatientID { get => patientID; set => patientID = value; }
         public string FirstName { get => firstName; set => firstName = value; }
         public string LastName { get => lastName; set => lastName = value; }
-        public string DOB1 { get => DOB; set => DOB = value; }
+        public string Dob { get => dob; set => dob = value; }
         public string Address { get => address; set => address = value; }
         public object MedicalHistory { get => medicalHistory; set => medicalHistory = value; }
         public int PhoneNumber { get => phoneNumber; set => phoneNumber = value; }
         public List<Prescription> Prescriptions { get => prescriptions; set => prescriptions = value; }
 
 
-        public void CreatePrescription(int prescriptionId, String drugName, float dosage, String issueDate, String expiryDate, String doctorName, Object doctorSignature, String patientName, String patientDOB, Object insuranceInfo, Boolean controlledSub)
+        public void CreatePrescription(Prescription p)
         {
-            Prescription p = new Prescription(prescriptionId, drugName, dosage, issueDate, expiryDate, doctorName, doctorSignature, patientName, patientDOB, insuranceInfo, controlledSub);
-            prescriptions.Add(p);
+            Prescriptions.Add(p);
         }
 
         public string ToString()

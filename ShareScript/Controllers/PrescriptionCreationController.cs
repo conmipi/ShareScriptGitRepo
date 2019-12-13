@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using ShareScript.Models;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -12,24 +13,22 @@ namespace ShareScript.Controllers
     public class PrescriptionCreationController : Controller
     {
         // GET: /<controller>/
-        [HttpGet]
-        public IActionResult Index()
+        public IActionResult Index(Patient patient)
         {
-            Patient patient = (Patient) TempData["Patient"];
-            return View(patient);
+            TempData["patientData"] = JsonConvert.SerializeObject(patient);
+            return View();
         }
 
-        [HttpPost]
-        public ActionResult Index(string drugName, float dosage, bool controlledSub)
-        {
-            System.Diagnostics.Debug.WriteLine("Hitting Index");
-            Patient patient = (Patient)TempData["Patient"];
-            //Prescription prescription = new Prescription(000000, drugName, dosage, "00000", "0000", "DoctorName", null, patient.FirstName, patient.DOB1, null, controlledSub);
 
-            //patient.Prescriptions.Add(prescription);
-            System.Diagnostics.Debug.WriteLine(patient);
-            System.Diagnostics.Debug.WriteLine("Patient Info");
-            return View();
+        [HttpPost]
+        public ActionResult Index(Prescription prescription)
+        {
+            Patient patient = JsonConvert.DeserializeObject<Patient>((string)TempData["patientData"]);
+            Prescription pres = new Prescription(000000, prescription.DrugName, prescription.Dosage, "00000", "0000", "DoctorName", null, "Fn", "Dob", null, prescription.ControlledSub);
+            //patient.CreatePrescription(pres);
+            patient.CreatePrescription(pres);
+            TempData["updatedPatient"] = JsonConvert.SerializeObject(patient);
+            return RedirectToAction("Index","PatientSelect");
         }
     }
 }
