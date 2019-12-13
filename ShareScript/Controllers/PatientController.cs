@@ -41,5 +41,17 @@ namespace ShareScript.Controllers
             //TempData["updatedPatient"] = JsonConvert.SerializeObject(patient);
             return RedirectToAction("PatientSelect");
         }
+
+        public ActionResult PrescriptionList()
+        {
+            // Create a new patient object
+            var patient = new Patient();  
+
+            // Set the patient with the prescription information to view
+            patient = patientList[0];
+
+            // Return the view for the respective patient
+            return View("PrescriptionList",patient);
+        }
     }
 }

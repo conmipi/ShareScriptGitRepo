@@ -1,0 +1,30 @@
+﻿@model ShareScript.Models.Patient
+@{
+    ViewData["Title"] = "PrescriptionList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>PrescriptionList</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Drug Name</th>
+            <th scope="col">Dosage (mg)</th>
+            <th scope="col">Issue Date</th>
+            <th scope="col">Expiry Date</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var prescription in Model.Prescriptions)
+        {
+            <tr>
+                <td>@prescription.PrescriptionId</td>
+                <td>@prescription.DrugName</td>
+                <td>@prescription.Dosage</td>
+                <td>@prescription.IssueDate</td>
+                <td>@prescription.ExpiryDate</td>
+            </tr>
+        }
+    </tbody>
+</table>
