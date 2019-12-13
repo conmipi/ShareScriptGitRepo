@@ -1,25 +1,30 @@
 {
   "format": 1,
   "restore": {
-    "/Users/dervinis/Desktop/SEAssignment/ShareScriptGitRepo/ShareScript/ShareScript.csproj": {}
+    "C:\\Users\\Mark\\Source\\Repos\\ShareScriptGitRepo\\ShareScript\\ShareScript.csproj": {}
   },
   "projects": {
-    "/Users/dervinis/Desktop/SEAssignment/ShareScriptGitRepo/ShareScript/ShareScript.csproj": {
+    "C:\\Users\\Mark\\Source\\Repos\\ShareScriptGitRepo\\ShareScript\\ShareScript.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/dervinis/Desktop/SEAssignment/ShareScriptGitRepo/ShareScript/ShareScript.csproj",
+        "projectUniqueName": "C:\\Users\\Mark\\Source\\Repos\\ShareScriptGitRepo\\ShareScript\\ShareScript.csproj",
         "projectName": "ShareScript",
-        "projectPath": "/Users/dervinis/Desktop/SEAssignment/ShareScriptGitRepo/ShareScript/ShareScript.csproj",
-        "packagesPath": "/Users/dervinis/.nuget/packages/",
-        "outputPath": "/Users/dervinis/Desktop/SEAssignment/ShareScriptGitRepo/ShareScript/obj/",
+        "projectPath": "C:\\Users\\Mark\\Source\\Repos\\ShareScriptGitRepo\\ShareScript\\ShareScript.csproj",
+        "packagesPath": "C:\\Users\\Mark\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Mark\\Source\\Repos\\ShareScriptGitRepo\\ShareScript\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "/Users/dervinis/.config/NuGet/NuGet.Config"
+          "C:\\Users\\Mark\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -73,7 +78,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/3.0.101/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     }
